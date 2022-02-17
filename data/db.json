@@ -1,0 +1,10 @@
+{
+    "calendarItems": [
+        {
+            "id": "0",
+            "event": "Friday BBQ",
+            "dayOfTheWeek": "Friday",
+            "time": "1800"
+        }
+    ]
+}
