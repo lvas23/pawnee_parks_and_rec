@@ -18,12 +18,26 @@ function filterByQuery(query, dbArray) {
     return filteredResults;
 }
 
+function findById(id, calendarItemsArray) {
+    const result = calendarItemsArray.filter(db = db.id === id)[0];
+    return result;
+}
+
 app.get('/api/db', (req, res) => {
     let results = db;
     if (req.query) {
         results = filterByQuery(req.query, results);
     }
     res.json(results);
+});
+
+app.get('/api/db/:id', (req, res) => {
+    const result = findById(req.params.id, db);
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(404);
+    }
 });
 
 app.listen(PORT, () => {
