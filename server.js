@@ -1,18 +1,45 @@
-// const { Router } = require('express');
-// const express = require('express');
+const express = require('express');
+const db = require('./data/db');
+const PORT = process.env.PORT || 3001;
 
-// const PORT = process.env.PORT || 3001;
-// const app = express();
-// const apiRoutes = require('./routes/apiRoutes');
-// const htmlRoutes = require('./routes/htmlRoutes');
+const app = express();
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(express.static('public'));
+function filterByQuery(query, dbArray) {
+    let filteredResults = dbArray;
+    if (query.event) {
+        filteredResults = filteredResults.filter(db => db.event === query.event);
+    }
+    if (query.dayOfTheWeek) {
+        filteredResults = filteredResults.filter(db => db.dayOfTheWeek === query.dayOfTheWeek);
+    }
+    if (query.time) {
+        filteredResults = filteredResults.filter(db => db.time === query.time);
+    }
+    return filteredResults;
+}
 
-// app.use('/api', apiRoutes);
-// app.use('/', htmlRoutes);
+function findById(id, calendarItemsArray) {
+    const result = calendarItemsArray.filter(db = db.id === id)[0];
+    return result;
+}
 
-// app.listen(PORT, () => {
-//     console.log(`API server now on port ${PORT}!`);
-// });
+app.get('/api/db', (req, res) => {
+    let results = db;
+    if (req.query) {
+        results = filterByQuery(req.query, results);
+    }
+    res.json(results);
+});
+
+app.get('/api/db/:id', (req, res) => {
+    const result = findById(req.params.id, db);
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(404);
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`);
+});

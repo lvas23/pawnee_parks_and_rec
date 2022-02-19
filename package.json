@@ -1,4 +1,22 @@
 {
+  "name": "pawnee_parks_and_rec-main",
+  "version": "1.0.0",
+  "description": "create develop branch",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonVissage/pawnee_parks_and_rec.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasonVissage/pawnee_parks_and_rec/issues"
+  },
+  "homepage": "https://github.com/JasonVissage/pawnee_parks_and_rec#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.3",
