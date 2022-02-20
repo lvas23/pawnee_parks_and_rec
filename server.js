@@ -4,11 +4,13 @@ const PORT = process.env.PORT || 3001;
 const fs = require('fs');
 const path = require('path');
 const { type } = require('express/lib/response');
+const res = require('express/lib/response');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 function filterByQuery(query, calendarArray) {
     let filteredResults = calendarArray;
@@ -78,6 +80,22 @@ app.post('/api/calendar', (req, res) => {
     const calendar = createNewCalendar(req.body, calendar);
     res.json(calendar);
     }
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './index.html'));
+});
+
+app.get('/calendar', (req, res) => {
+    res.sendFile(path.join(__dirname, './calendar.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, './about.html'));
+});
+
+app.get('*', (req, res) => {
+    res.sendDate(path.join(__dirname, './index.html'));
 });
 
 app.listen(PORT, () => {
