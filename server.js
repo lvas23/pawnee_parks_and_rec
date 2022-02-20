@@ -1,6 +1,9 @@
 const express = require('express');
 const calendar = require('./data/calendar');
 const PORT = process.env.PORT || 3001;
+const fs = require('fs');
+const path = require('path');
+const { type } = require('express/lib/response');
 
 const app = express();
 
@@ -28,9 +31,25 @@ function findById(id, calendarArray) {
 
 function createNewCalendar(body, calendarArray) {
     console.log(body);
+    calendarArray.push(calendar);
+    fs.writeFileSync(
+        path.join(__dirname, './data/calendar.json'),
+        JSON.stringify({ calendar: calendarArray }, null, 2)
+    );
+    return calendar;
+}
 
-
-    return body;
+function validateCalendar(calendar) {
+    if (!calendar.event || typeof calendar.event !== 'string') {
+        return false;
+    }
+    if (!calendar.dayOfTheWeek || typeof calendar.dayOfTheWeek !== 'string') {
+        return false;
+    }
+    if (!calendar.time || typeof calendar.time !== 'string') {
+        return false;
+    }
+    return true;
 }
 
 app.get('/api/calendar', (req, res) => {
@@ -52,8 +71,13 @@ app.get('/api/calendar/:id', (req, res) => {
 
 app.post('/api/calendar', (req, res) => {
     req.body.id = calendar.length.toString();
-    
-    res.json(req.body)
+
+    if (!validateCalendar(req.body)) {
+        res.status(400).send('The calendar item is not properly formatted.');
+    } else{
+    const calendar = createNewCalendar(req.body, calendar);
+    res.json(calendar);
+    }
 });
 
 app.listen(PORT, () => {
