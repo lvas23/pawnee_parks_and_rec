@@ -1,103 +1,39 @@
-const express = require('express');
-const calendar = require('./data/calendar');
-const PORT = process.env.PORT || 3001;
-const fs = require('fs');
 const path = require('path');
-const { type } = require('express/lib/response');
-const res = require('express/lib/response');
+const express = require('express');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
+const sequelize = require("./config/connection");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+const helpers = require('./utils/helpers');
+
+const hbs = exphbs.create({ helpers });
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-function filterByQuery(query, calendarArray) {
-    let filteredResults = calendarArray;
-    if (query.event) {
-        filteredResults = filteredResults.filter(calendar => calendar.event === query.event);
-    }
-    if (query.dayOfTheWeek) {
-        filteredResults = filteredResults.filter(calendar => calendar.dayOfTheWeek === query.dayOfTheWeek);
-    }
-    if (query.time) {
-        filteredResults = filteredResults.filter(calendar => calendar.time === query.time);
-    }
-    return filteredResults;
-}
+app.use(require('./controllers/'));
 
-function findById(id, calendarArray) {
-    const result = calendarArray.filter(calendar = calendar.id === id)[0];
-    return result;
-}
-
-function createNewCalendar(body, calendarArray) {
-    console.log(body);
-    calendarArray.push(calendar);
-    fs.writeFileSync(
-        path.join(__dirname, './data/calendar.json'),
-        JSON.stringify({ calendar: calendarArray }, null, 2)
-    );
-    return calendar;
-}
-
-function validateCalendar(calendar) {
-    if (!calendar.event || typeof calendar.event !== 'string') {
-        return false;
-    }
-    if (!calendar.dayOfTheWeek || typeof calendar.dayOfTheWeek !== 'string') {
-        return false;
-    }
-    if (!calendar.time || typeof calendar.time !== 'string') {
-        return false;
-    }
-    return true;
-}
-
-app.get('/api/calendar', (req, res) => {
-    let results = calendar;
-    if (req.query) {
-        results = filterByQuery(req.query, results);
-    }
-    res.json(results);
-});
-
-app.get('/api/calendar/:id', (req, res) => {
-    const result = findById(req.params.id, calendar);
-    if (result) {
-        res.json(result);
-    } else {
-        res.send(404);
-    }
-});
-
-app.post('/api/calendar', (req, res) => {
-    req.body.id = calendar.length.toString();
-
-    if (!validateCalendar(req.body)) {
-        res.status(400).send('The calendar item is not properly formatted.');
-    } else{
-    const calendar = createNewCalendar(req.body, calendar);
-    res.json(calendar);
-    }
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
-});
-
-app.get('/calendar', (req, res) => {
-    res.sendFile(path.join(__dirname, './calendar.html'));
-});
-
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, './about.html'));
-});
-
-app.get('*', (req, res) => {
-    res.sendDate(path.join(__dirname, './index.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
