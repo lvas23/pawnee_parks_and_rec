@@ -1,26 +1,28 @@
 {
-  "name": "hacker-news-clone",
+  "name": "pawnee_parks_and_rec-main",
   "version": "1.0.0",
-  "description": "",
+  "description": "create develop branch",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
-    "seeds": "node seeds/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonVissage/pawnee_parks_and_rec.git"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^4.0.1",
-    "connect-session-sequelize": "^6.1.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "express-session": "^1.17.0",
-    "handlebars": "^4.7.3",
-    "mysql2": "^2.1.0",
-    "sequelize": "^5.21.5"
+  "bugs": {
+    "url": "https://github.com/JasonVissage/pawnee_parks_and_rec/issues"
   },
-  "devDependencies": {
-    "jest": "^25.1.0"
+  "homepage": "https://github.com/JasonVissage/pawnee_parks_and_rec#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
   }
 }
