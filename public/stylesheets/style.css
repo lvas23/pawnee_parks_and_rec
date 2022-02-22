@@ -1,5 +1,20 @@
 body {
   font: 100% Helvetica, sans-serif;
-  color: #333;
+  color: rgb(236, 4, 4);
+  height: auto;
+  background-color: grey;
 }
+
+.banner {
+  border: 1px solid red;
+  padding: 0;
+  margin: 0;
+}
+
+.banner-img {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 /*# sourceMappingURL=style.css.map */
