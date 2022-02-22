@@ -1,16 +1,21 @@
-const express = require('express');
-const calendar = require('./data/calendar');
-const PORT = process.env.PORT || 3001;
-const fs = require('fs');
 const path = require('path');
+<<<<<<< HEAD
+const express = require('express');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+=======
 const { type } = require('express/lib/response');
-const res = require('express/lib/response');
+>>>>>>> parent of 4669625 (calendar html, initial front end script, get routes for front end)
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
+<<<<<<< HEAD
+const sequelize = require("./config/connection");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+=======
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
 
 function filterByQuery(query, calendarArray) {
     let filteredResults = calendarArray;
@@ -61,43 +66,38 @@ app.get('/api/calendar', (req, res) => {
     }
     res.json(results);
 });
+>>>>>>> parent of 4669625 (calendar html, initial front end script, get routes for front end)
 
-app.get('/api/calendar/:id', (req, res) => {
-    const result = findById(req.params.id, calendar);
-    if (result) {
-        res.json(result);
-    } else {
-        res.send(404);
-    }
-});
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
 
-app.post('/api/calendar', (req, res) => {
-    req.body.id = calendar.length.toString();
+app.use(session(sess));
 
-    if (!validateCalendar(req.body)) {
-        res.status(400).send('The calendar item is not properly formatted.');
-    } else{
-    const calendar = createNewCalendar(req.body, calendar);
-    res.json(calendar);
-    }
-});
+const helpers = require('./utils/helpers');
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
-});
+<<<<<<< HEAD
+const hbs = exphbs.create({ helpers });
 
-app.get('/calendar', (req, res) => {
-    res.sendFile(path.join(__dirname, './calendar.html'));
-});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, './about.html'));
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', (req, res) => {
-    res.sendDate(path.join(__dirname, './index.html'));
-});
+app.use(require('./controllers/'));
 
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+=======
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
+>>>>>>> parent of 4669625 (calendar html, initial front end script, get routes for front end)
 });
