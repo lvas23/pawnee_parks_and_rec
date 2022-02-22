@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS parks_db;
+DROP DATABASE IF EXISTS pawnee_parks_db;
 
-CREATE DATABASE parks_db;
+CREATE DATABASE pawnee_parks_db;
