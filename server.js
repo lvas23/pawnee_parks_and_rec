@@ -1,15 +1,21 @@
-const express = require('express');
-const calendar = require('./data/calendar');
-const PORT = process.env.PORT || 3001;
 const fs = require('fs');
 const path = require('path');
-const { type } = require('express/lib/response');
-const res = require('express/lib/response');
+const express = require('express');
+const { calendar } = require('./data/calendar');
 
+const PORT = process.env.PORT || 3001;
 const app = express();
 
-const sequelize = require("./config/connection");
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.get('/api/calendar', (req, res) => {
+    let results = calendar;
+    if (req.query) {
+        results = filterByQuery(req.query, results);
+    }
+    res.json(results);
+});
 
 app.get('/api/calendar/:id', (req, res) => {
     const result = findById(req.params.id, calendar);

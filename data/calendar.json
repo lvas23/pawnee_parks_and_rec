@@ -4,25 +4,25 @@
             "id": "0",
             "event": "Friday BBQ",
             "dayOfTheWeek": "Friday",
-            "time": "1800"
+            "time": "6:00 PM"
         },
         {
             "id": "1",
             "event": "Spring Kick Off",
             "dayOfTheWeek": "Saturday",
-            "time": "1700"
+            "time": "5:00 PM"
         },
         {
             "id": "2",
             "event": "Town Hall Meeting",
             "dayOfTheWeek": "Tuesday",
-            "time": "1300"
+            "time": "1:00 PM"
         },
         {
             "id": "3",
             "event": "Lil' Sebastian Photo Shoot",
             "dayOfTheWeek": "Wednesday",
-            "time": "1500"
+            "time": "3:00 PM"
         }
     ]
 }
