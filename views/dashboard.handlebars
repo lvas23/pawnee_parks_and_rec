@@ -3,12 +3,16 @@
 
   <form class="new-post-form">
     <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
+      <label for="post-event">Event</label>
+      <input type="text" id="post-event" name="post-event" />
     </div>
     <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <label for="post-location">Location</label>
+      <input type="text" id="post-location" name="post-location" />
+    </div>
+    <div>
+      <label for="post-date">Date</label>
+      <input id="post-date" name="post-date" />
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
@@ -16,7 +20,7 @@
 
 {{#if posts.length}}
 <section>
-  <h2>Your Posts for Parks and Recreation</h2>
+  <h2>Upcoming Events</h2>
   <ol>
     {{#each posts as |post|}}
     <li>
