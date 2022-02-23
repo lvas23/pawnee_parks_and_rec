@@ -1,20 +1,25 @@
-body {
+/* body {
   font: 100% Helvetica, sans-serif;
   color: rgb(236, 4, 4);
   height: auto;
   background-color: grey;
-}
+} */
 
 .banner {
-  border: 1px solid red;
+  background-color: black;
+  position: relative;
+  border: 1px solid black;
   padding: 0;
   margin: 0;
 }
 
 .banner-img {
+  position: relative;
   max-width: 100%;
   padding: 0;
   margin: 0;
 }
 
-/*# sourceMappingURL=style.css.map */
+.home-link {
+  font-weight: bold;
+}
