@@ -1,18 +1,37 @@
-// const { Router } = require('express');
-// const express = require('express');
+const path = require('path');
+const express = require('express');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// const PORT = process.env.PORT || 3001;
-// const app = express();
-// const apiRoutes = require('./routes/apiRoutes');
-// const htmlRoutes = require('./routes/htmlRoutes');
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(express.static('public'));
+const sequelize = require('./config/connection');
 
-// app.use('/api', apiRoutes);
-// app.use('/', htmlRoutes);
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
 
-// app.listen(PORT, () => {
-//     console.log(`API server now on port ${PORT}!`);
-// });
+const helpers = require('./utils/helpers');
+
+const hbs = exphbs.create({ helpers });
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('./controllers/'));
+app.use(session(sess));
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});

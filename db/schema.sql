@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS calandar;
+DROP DATABASE IF EXISTS pawnee_parks_db;
 
-CREATE TABLE calandar(
-    id INTEGER AUTO_INCREMENT PRIMARY KEY
-    event VARCHAR(50) NOT NULL,
-    host VARCHAR(50),
-    event_date MONTHNAME DAYOFMONTH DAYOFYEAR()  
-);
+CREATE DATABASE pawnee_parks_db;
