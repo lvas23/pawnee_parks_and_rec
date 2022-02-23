@@ -20,6 +20,24 @@
   margin: 0;
 }
 
+/*Home button links and styling*/
 .home-link {
   font-weight: bold;
 }
+
+.about-link {
+  font-weight: bold;
+}
+
+.events-link {
+  font-weight: bold;
+}
+
+.complaints-link {
+  font-weight: bold;
+}
+
+.olderversion-link {
+  font-weight: bold;
+}
+
