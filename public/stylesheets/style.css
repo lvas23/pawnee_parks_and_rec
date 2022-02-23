@@ -1,5 +1,25 @@
-body {
+/* body {
   font: 100% Helvetica, sans-serif;
-  color: #333;
+  color: rgb(236, 4, 4);
+  height: auto;
+  background-color: grey;
+} */
+
+.banner {
+  background-color: black;
+  position: relative;
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
 }
-/*# sourceMappingURL=style.css.map */
+
+.banner-img {
+  position: relative;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.home-link {
+  font-weight: bold;
+}

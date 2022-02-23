@@ -1,0 +1,35 @@
+<section>
+  <h2>Create New Post for Parks and Recreation</h2>
+
+  <form class="new-post-form">
+    <div>
+      <label for="post-event">Event</label>
+      <input type="text" id="post-event" name="post-event" />
+    </div>
+    <div>
+      <label for="post-location">Location</label>
+      <input type="text" id="post-location" name="post-location" />
+    </div>
+    <div>
+      <label for="post-date">Date</label>
+      <input id="post-date" name="post-date" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
+{{#if posts.length}}
+<section>
+  <h2>Upcoming Events</h2>
+  <ol>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post}}
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>

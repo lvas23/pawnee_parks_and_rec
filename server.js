@@ -1,58 +1,37 @@
-const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const { calendar } = require('./data/calendar');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const PORT = process.env.PORT || 3001;
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
+const sequelize = require('./config/connection');
+
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+const helpers = require('./utils/helpers');
+
+const hbs = exphbs.create({ helpers });
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('./controllers/'));
+app.use(session(sess));
 
-app.get('/api/calendar', (req, res) => {
-    let results = calendar;
-    if (req.query) {
-        results = filterByQuery(req.query, results);
-    }
-    res.json(results);
-});
-
-app.get('/api/calendar/:id', (req, res) => {
-    const result = findById(req.params.id, calendar);
-    if (result) {
-        res.json(result);
-    } else {
-        res.send(404);
-    }
-});
-
-app.post('/api/calendar', (req, res) => {
-    req.body.id = calendar.length.toString();
-
-    if (!validateCalendar(req.body)) {
-        res.status(400).send('The calendar item is not properly formatted.');
-    } else{
-    const calendar = createNewCalendar(req.body, calendar);
-    res.json(calendar);
-    }
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
-});
-
-app.get('/calendar', (req, res) => {
-    res.sendFile(path.join(__dirname, './calendar.html'));
-});
-
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, './about.html'));
-});
-
-app.get('*', (req, res) => {
-    res.sendDate(path.join(__dirname, './index.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
