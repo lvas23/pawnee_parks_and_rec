@@ -11,6 +11,9 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet">
     <title>Pawnee, IN Parks and Rec</title>
   </head>
   <body>
@@ -21,14 +24,69 @@
           src="./assets/images/Pawnee Parks and Recreation_revised.jpeg"
           alt=""
         />
-        <a href="/" class="home-link">Home</a>
+        <a href="./index.html" class="home-link">Home</a>
         <a href="about.html" class="about-link">About</a>
-        <a href="calendar.html" class="calendar-link">Events</a>
-        <a href="https://j.gifs.com/v960Xq.gif" class="complaints-link"
+        <a href="events.html" class="calendar-link">Events</a>
+        <a
+          href="https://j.gifs.com/v960Xq.gif"
+          target="_blank"
+          class="complaints-link"
           >Complaints</a
         >
         <a href="old_site.html" class="old-site-link">Older Version</a>
       </div>
     </header>
+
+    <div class="background-img">
+      <!-- Headlines section -->
+      <div class="info-section">
+        <div class="info-box">
+          <h1>This Month's Headlines</h1>
+          <ul>
+            <li>
+              <p class="info-text">Local Man Catches Turtle Flu</p>
+            </li>
+            <li>
+              <p class="info-text">Ice Town Mayor Comes to Pawnee</p>
+            </li>
+            <li>
+              <p class="info-text">
+                You See a Horse, We See a Hero aka Lil Sebastian
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h1>Complaints</h1>
+          <form action="">
+            <input type="text" class="complaint-form" placeholder="Enter Complaint Here">
+            <button class="complaint-button">Post</button>
+          </form>
+          <ul>
+            <li>
+              <p class="info-text">
+                Sign said do not drink sprinkler water, so I made sun tea with
+                it and now I have an infection.
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                I found a sandwich in one of your parks and I want to know why
+                it didnt have mayonnaise.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          <h2>
+          “Time is money; Money is power; Power is pizza; Pizza is knowledge.
+          Let’s go!” — April Ludgate</h2>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
