@@ -60,18 +60,19 @@
 .info-section {
   display: flex;
   padding: 20px 35px;
-  background-color: rgb(37, 40, 41);
+  background-color: #cad2d4fd;
   display: display-box;
   justify-content: space-between;
   flex-wrap: wrap;
   font-weight: bold;
   font-size: 20px;
-  color: #fc3838;
+  color: #0e0d0d;
   margin: 0;
 }
 
 .info-box {
   flex: 1;
+  border: 1px solid black;
 }
 
 .info-box:first-child {
@@ -80,9 +81,10 @@
 
 /*Styling the footer*/
 footer {
-  background: #fce138;
+  background: #363428;
   width: 100%;
   padding: 40px 35px;
+  text-align: center;
 }
 footer h2 {
   display: inline;
