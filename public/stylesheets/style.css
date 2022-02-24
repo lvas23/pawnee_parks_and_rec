@@ -41,3 +41,18 @@
   font-weight: bold;
 }
 
+/*Boxing for headlines*/
+section {
+  padding: 20px 35px;
+  background-color: rgb(37, 40, 41);
+  display: display-box;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+section  {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fc3838;
+  margin: 0;
+};
+
