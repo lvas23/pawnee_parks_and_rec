@@ -98,12 +98,17 @@ footer p {
   text-align: right;
 }
 
+/*images*/
 section img {
   width: 300px;
   height: 300px;
+  justify-content: center;
 }
 
 .about {
   display: block;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
 }
