@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="public/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
     <title>Pawnee, IN Parks and Rec</title>
   </head>
   <body>
@@ -15,22 +21,31 @@
           src="./assets/images/Pawnee Parks and Recreation_revised.jpeg"
           alt=""
         />
+        <a href="/" class="home-link">Home</a>
+        <a href="about.html" class="about-link">About</a>
+        <a href="calendar.html" class="calendar-link">Events</a>
+        <a
+          href="https://j.gifs.com/v960Xq.gif"
+          target="_blank"
+          class="complaints-link"
+          >Complaints</a
+        >
+        <a href="old_site.html" class="old-site-link">Older Version</a>
       </div>
     </header>
-    <div>
-      <p>
-        <a href="/">Home</a>
-      </p>
-      <p>
-        <a href="./about.html">About</a>
-      </p>
-      <p>
-        <a href="/calendar.html">Events</a>
-      </p>
-      <p>
-        <a href="">Complaints</a>
-      </p>
-    </div>
+    
+    <!-- <img src="./assets/images/ClosedParks.jpg" alt="" class="park-background bg-image"> -->
+    <div
+  class="bg-image"
+  style="
+    background-image: url('./assets/images/ClosedParks.jpg');
+    height: 100%vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+  "
+    >
     <section class="about">
       <div>
         <h2>Meet Our Staff</h2>
@@ -152,5 +167,6 @@
         </div>
       </div>
     </section>
+    </div>
   </body>
 </html>
