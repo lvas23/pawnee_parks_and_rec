@@ -41,6 +41,12 @@
   font-weight: bold;
 }
 
+/*about me background
+.park-background {
+  flex-wrap: wrap;
+  display: block;
+}*/
+
 /*Boxing for headlines*/
 /* .headlines-box {
   padding: 20px 35px;
@@ -78,6 +84,39 @@
 .info-box:first-child {
   margin-right: 20px;
 }
+
+/*Styling Meet the Staff*/
+.about h2 {
+  font-weight: bolder;
+  color: rgb(199, 80, 80);
+  font-style: oblique;
+}
+
+.staff h3 {
+  font-weight: bold;
+  color: rgb(82, 12, 122);
+  font-style: italic;
+}
+
+.step-text p {
+  font-weight: 600;
+  color: rgb(199, 80, 80);
+  font-style: oblique;
+}
+
+.staff-reverse h3 {
+  font-weight: bold;
+  color: rgb(82, 12, 122);
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
 
 /*Styling the footer*/
 footer {
