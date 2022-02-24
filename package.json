@@ -17,6 +17,7 @@
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.0",
     "handlebars": "^4.7.3",
+    "jquery": "^3.6.0",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.5"
   },
