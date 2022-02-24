@@ -20,12 +20,32 @@
   margin: 0;
 }
 
+/*Home button links and styling*/
 .home-link {
   font-weight: bold;
 }
 
+<<<<<<< HEAD
 .nav {
   border: 2px solid black;
   padding: 0;
   margin: 0;
 }
+=======
+.about-link {
+  font-weight: bold;
+}
+
+.events-link {
+  font-weight: bold;
+}
+
+.complaints-link {
+  font-weight: bold;
+}
+
+.olderversion-link {
+  font-weight: bold;
+}
+
+>>>>>>> c816d09bc80bc5fef5d858048d8d3b8dc5599e23
