@@ -2,6 +2,18 @@ const router = require('express').Router();
 const { Post } = require('../models');
 const { sequelize } = require('../models/Post');
 
+
+router.get("/about",(req,res) => {
+  res.render("about")
+})
+
+router.get("/calendar", (req,res)=> {
+  res.render("calendar")
+})
+
+router.get("/events", (req,res)=> {
+  res.render("events")
+})
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({

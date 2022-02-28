@@ -3,17 +3,7 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment, Vote } = require('../models');
 const { restore } = require('../models/Post');
 
-router.get("/about",(req,res) => {
-  res.render("about")
-})
 
-router.get("/calendar", (req,res)=> {
-  res.render("calendar")
-})
-
-router.get("/events", (req,res)=> {
-  res.render("events")
-})
  
 // get all posts for homepage
 router.get('/', (req, res) => {
