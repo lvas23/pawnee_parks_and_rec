@@ -11,6 +11,9 @@ router.get("/calendar", (req,res)=> {
   res.render("calendar")
 })
 
+router.get("/events", (req,res)=> {
+  res.render("events")
+})
  
 // get all posts for homepage
 router.get('/', (req, res) => {
