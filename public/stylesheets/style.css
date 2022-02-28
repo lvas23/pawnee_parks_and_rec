@@ -1,0 +1,185 @@
+/* body {
+  font: 100% Helvetica, sans-serif;
+  color: rgb(236, 4, 4);
+  height: auto;
+  background-color: grey;
+} */
+
+.banner {
+  background-color: black;
+  position: relative;
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
+}
+
+.banner-img {
+  position: relative;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/*Home button links and styling*/
+.home-link {
+  font-weight: bold;
+}
+
+.about-link {
+  font-weight: bold;
+}
+
+.calendar-link {
+  font-weight: bold;
+}
+
+.complaints-link {
+  font-weight: bold;
+}
+
+.old-site-link {
+  font-weight: bold;
+}
+
+/*about me background
+.park-background {
+  flex-wrap: wrap;
+  display: block;
+}*/
+
+/*Boxing for headlines*/
+/* .headlines-box {
+  padding: 20px 35px;
+  background-color: rgb(37, 40, 41);
+  display: display-box;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fc3838;
+  margin: 0;
+}
+.headlines {
+  color: blue;
+} */
+
+.info-section {
+  display: flex;
+  padding: 20px 35px;
+  background-color: #cad2d4fd;
+  display: display-box;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  font-family: 'Playfair Display', sans-serif;
+  text-align: center;
+}
+
+.info-box {
+  flex: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.info-box:first-child {
+  margin-right: 20px;
+}
+
+.info-text {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: left;
+}
+
+.complaint-form {
+  /* padding-right: 5px; */
+  margin: 0 auto;
+  border: auto;
+  border-radius: 5;
+  color: black;
+}
+.complaint-button {
+  border-radius: 15%;
+}
+
+/*Styling Meet the Staff*/
+.about-title {
+  font-weight: bold;
+  color: white;
+  font-size: 34px;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 300px;
+  border-radius: 3%;
+  margin: auto;
+  background-color: orange;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  background-color: rgb(0, 99, 30);
+}
+
+/*Styling the footer*/
+footer {
+  background: #363428;
+  width: 100%;
+  padding: 40px 35px;
+  text-align: center;
+  /* position: fixed; */
+}
+footer h2 {
+  display: inline;
+  color: #19df3a;
+  font-size: 20px;
+  margin: 0;
+}
+footer p {
+  float: right;
+  line-height: 1.5;
+  text-align: right;
+}
+
+/*images*/
+section img {
+  width: 300px;
+  height: 300px;
+  justify-content: center;
+}
+
+.about {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 300px;
+  border-radius: 3%;
+  /* border: 5px solid black; */
+  justify-content: center;
+  align-content: center;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}

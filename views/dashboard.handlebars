@@ -1,0 +1,134 @@
+<section style="background-image: ;">
+  <h2>Create New Post for Parks and Recreation</h2>
+</section>
+
+<div class="background-img">
+      <!-- Headlines section -->
+      <div class="info-section">
+        <div class="info-box">
+          <h1>This Month's Headlines</h1>
+          <ul>
+            <li>
+              <p class="info-text">
+                Pawnee Man Catches Turtle Flu
+              </p>
+            </li>
+            <li>
+              <p class="info-text">Ice Town Mayor Comes to Pawnee</p>
+            </li>
+            <li>
+              <p class="info-text">
+                You See a Horse, We See a Hero aka Lil Sebastian
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                New Locally Created Liquor, Snake Juice, Makes It's Debut 
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Pawnee Man Falls Into Construction Pit
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Pawnee Band Mouse Rat Performing in Indianapolis 
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Who is Duke Silver?
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Eagleton Reabsorbed Back Into The Pawnee
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Pawnee Parks Department Leads Play60 for Pawnee Children With Indianapolis Colts
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Complaints Written by Typewriter Appear Across Pawnee
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Pounch Burger Introduces New 512oz Child Size Soda for $1.59
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Leslie Knope Annouces Bid for City Council Seat
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h1>Complaints</h1>
+          <form action="">
+            <input type="text" class="complaint-form" placeholder="Enter Complaint Here">
+            <button class="complaint-button">Post</button>
+          </form>
+          <ul>
+            <li>
+              <p class="info-text">
+                Sign said do not drink sprinkler water, so I made sun tea with
+                it and now I have an infection.
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                I found a sandwich in one of your parks and I want to know why
+                it didnt have mayonnaise.
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                There's a huge hole the size of a baseball field on Sullivan Street and when I jumped into it, I got hurt. 
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                There is a disturbing lack of benches in Ramsett park. I want to sit more!
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                Why don't you have hand dryers in the park bathrooms? They are so much more sanitary than paper towels. Anyone knows that!
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                I made something in one of your pottery classes, and its terrible!
+              </p>
+            </li>
+            <li>
+              <p class="info-text">
+                My dog went to one of your parks and ate another dogs feces. I'm going to sue you for that. 
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+{{#if posts.length}}
+  <section>
+    <h2>Complaints</h2>
+    <ol>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post}}
+      {{!-- <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a> --}}
+    </li>
+    {{/each}}
+  </ol>
+  </section>
+{{/if}}
+
+<script src='/javascript/add-post.js'></script>
